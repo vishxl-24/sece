@@ -1,38 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Tracker</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Input Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f8f9fa, #e0e0e0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #output {
+      margin-top: 20px;
+      padding: 12px;
+      background: #f0f0f0;
+      border-radius: 8px;
+      color: #333;
+      font-size: 16px;
+      display: none;
+    }
+  </style>
 </head>
 <body>
+
+  <div class="card">
     <h1>Type Something</h1>
     <input type="text" id="userInput" placeholder="Start typing here...">
+    <button onclick="handleSubmit()">OK</button>
+    <div id="output"></div>
+  </div>
 
-    <script>
-        // Get reference to the input field
-        const inputField = document.getElementById('userInput');
+  <script>
+    function handleSubmit() {
+      const input = document.getElementById('userInput').value;
+      console.log('User submitted:', input); // Log to console
+      const outputDiv = document.getElementById('output');
+      outputDiv.textContent = 'You typed: ' + input;
+      outputDiv.style.display = 'block';
+    }
+  </script>
 
-        // Add event listener to capture input silently
-        inputField.addEventListener('input', (event) => {
-            const typedText = event.target.value;
-            console.log('User typed:', typedText); // Logs to console, not visible to user
-        });
-    </script>
 </body>
 </html>
